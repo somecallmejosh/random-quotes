@@ -1,26 +1,56 @@
 (function(){
   var quotes = [
     {
-      "quote": "Here's a quote",
-      "cite": "Source"
+      "quote": "Dear Mr. Vernon, we accept the fact that we had to sacrifice a whole Saturday in detention for whatever it was we did wrong. But we think you're crazy to make us write an essay telling you who we think we are. You see us as you want to see us - in the simplest terms, in the most convenient definitions. But what we found out is that each one of us is a brain...",
+      "cite": "Brian Johnson"
     },
     {
-      "quote": "Here's another quote",
-      "cite": "Someone"
+      "quote": "I've done just about everything there is except a few things that are illegal. I'm a nymphomaniac.",
+      "cite": "Allison Reynolds"
+    },
+    {
+      "quote": "Stupid, worthless, no good, goddamn, freeloading son of a bitch. Retarded, big mouth, know-it-all, asshole, jerk.",
+      "cite": "John Bender"
+    },
+    {
+      "quote": "Hey, you're not urinating in here, man.",
+      "cite": "Andrew Clark"
+    },
+    {
+      "quote": "Oh really? You guys think I'm just some untouchable peasant? Serf? Peon? Well, maybe so. But following a broom around after shitheads like you for the last 8 years, I've learned a couple of things.",
+      "cite": "Carl the Janitor"
+    },
+    {
+      "quote": "The next time I have to come in here I'm crackin' skulls.",
+      "cite": "Richard 'Dick' Vernon"
+    },
+    {
+      "quote": "NO, I NEVER DID IT!",
+      "cite": "Claire Standish"
     }
   ];
-  var currentQuote = 0;
   var quoteCount = quotes.length;
   var newQuote = document.querySelector(".quote-content");
   var newCite = document.querySelector(".quote-citation");
-  var updateButton = document.querySelector(".quote-toggle");
+  
+  initializer();  
+
+  function randomNumber() {
+    return Math.floor(Math.random() * (quoteCount - 1) + 1 );
+  }
 
   function showCurrentQuote(){
-    newQuote.textContent = quotes[currentQuote].quote;
-    newCite.textContent = quotes[currentQuote].cite;
+    var thisQuote = randomNumber();
+    newQuote.textContent = quotes[thisQuote].quote;
+    newCite.textContent = quotes[thisQuote].cite;
   }
-  
-  showCurrentQuote();
+
+  function initializer(){
+    showCurrentQuote();
+  }
+
+  var updateButton = document.querySelector(".quote-toggle");
+  updateButton.addEventListener("click", showCurrentQuote);
 })();
 
 
