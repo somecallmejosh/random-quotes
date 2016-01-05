@@ -32,7 +32,7 @@
   var quoteCount = quotes.length;
   var newQuote = document.querySelector(".quote-content");
   var newCite = document.querySelector(".quote-citation");
-  var twitterButton = document.querySelector(".twitter-share-button");
+  var twitterButton = document.querySelector(".share-button");
   var updateButton = document.querySelector(".quote-toggle");
   var quoteNumber;
 
@@ -41,8 +41,22 @@
     quoteNumber = Math.floor(Math.random() * (quoteCount - 1) + 1 );
   }
 
+  function truncateString() {
+    var trimLength = 140 - "via @joshuabriley".length;
+    var length = 6;
+    var trimmedString = string;
+  }
+
   function setTwitterLink(){
-    twitterButton.setAttribute('data-text', quotes[quoteNumber].quote);
+    // https://dev.twitter.com/web/tweet-button/web-intent
+    var quoteLength = quotes[quoteNumber].quote.length;
+    var link = "https://twitter.com/intent/tweet?via=joshuabriley&url=http://bit.ly/1Jqw89H&text=";
+    var truncatedQuote = quotes[quoteNumber].quote.substring(0, 97);
+    if(quoteLength < 97){
+      twitterButton.setAttribute('href', link + quotes[quoteNumber].quote);
+    } else {
+      twitterButton.setAttribute('href', link + truncatedQuote + "…");
+    } 
   }
 
   function showCurrentQuote(){
@@ -58,7 +72,7 @@
   }
 
   initializer();
-  
+
   updateButton.addEventListener("click", setQuoteNumber);
   updateButton.addEventListener("click", showCurrentQuote);
 })();

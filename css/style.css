@@ -29,6 +29,10 @@ h1::before, h1::after {
   content: "⁓";
   padding: 0 .5rem;
 }
+a, button {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 300;
+}
 p, q, cite {
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
@@ -46,6 +50,7 @@ button {
   cursor: pointer;
   display: block;
   width: 100%;
+  font-size: 1rem;
 }
 button:hover {
   background-color: #f4f4f4;
@@ -69,4 +74,18 @@ cite::before {
 .twitter-share-content {
   text-align: center;
   margin: 1rem 0 0 0;
+}
+
+.share-button {
+  background-color: #D4DBE0;
+  color: black;
+  display: inline-block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+.share-button:hover {
+  background-color: #50ABF1;
+  color: white;
 }
