@@ -66,3 +66,7 @@ cite {
 cite::before {
   content: "-- ";
 }
+.twitter-share-content {
+  text-align: center;
+  margin: 1rem 0 0 0;
+}

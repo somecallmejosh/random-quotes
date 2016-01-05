@@ -32,24 +32,34 @@
   var quoteCount = quotes.length;
   var newQuote = document.querySelector(".quote-content");
   var newCite = document.querySelector(".quote-citation");
-  
-  initializer();  
+  var twitterButton = document.querySelector(".twitter-share-button");
+  var updateButton = document.querySelector(".quote-toggle");
+  var quoteNumber;
 
-  function randomNumber() {
-    return Math.floor(Math.random() * (quoteCount - 1) + 1 );
+
+  function setQuoteNumber() {
+    quoteNumber = Math.floor(Math.random() * (quoteCount - 1) + 1 );
+  }
+
+  function setTwitterLink(){
+    twitterButton.setAttribute('data-text', quotes[quoteNumber].quote);
   }
 
   function showCurrentQuote(){
-    var thisQuote = randomNumber();
-    newQuote.textContent = quotes[thisQuote].quote;
-    newCite.textContent = quotes[thisQuote].cite;
+    newQuote.textContent = quotes[quoteNumber].quote;
+    newCite.textContent = quotes[quoteNumber].cite;
+    setTwitterLink();
   }
 
   function initializer(){
+    setQuoteNumber();
+    setTwitterLink();
     showCurrentQuote();
   }
 
-  var updateButton = document.querySelector(".quote-toggle");
+  initializer();
+  
+  updateButton.addEventListener("click", setQuoteNumber);
   updateButton.addEventListener("click", showCurrentQuote);
 })();
 
